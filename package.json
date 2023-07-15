@@ -1,0 +1,12 @@
+{
+  "name": "appprevisiontiempoapi",
+  "version": "1.0.0",
+  "description": "App Prevision Timepo API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mauricio Espinoza",
+  "license": "ISC"
+}
