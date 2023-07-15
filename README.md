@@ -24,7 +24,9 @@ Estas instrucciones te ayudarán a obtener una copia del proyecto y a ejecutarlo
 
 ### Pre-requisitos 📋
 
-No se requieren instalaciones adicionales para ejecutar este proyecto, solo necesitarás un navegador web actualizado.
+No se requieren instalaciones adicionales para ejecutar este proyecto, solo necesitarás un navegador web actualizado y crear una cuenta en Meteosource. Para obtener un APIKey. Este debe ser reemplazado en el ejemplo.
+
+https://www.meteosource.com/
 
 ### Instalación 🔧
 
