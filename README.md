@@ -2,7 +2,7 @@
 App de prevision de tiempo utilizando API metoesource
 
 #  **Proyecto 3 Aplicacion de Prevision del Tiempo para el BootCamp Desarrollo Web FullStack UDD**
-![github](logo.JPG)
+![github](logo.png)
 
 
 ## *Aplicacion de prevision de tiempo utilizando la API de meteosource para la informacion del tiempo:
