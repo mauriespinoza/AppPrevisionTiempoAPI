@@ -9,11 +9,11 @@ App de prevision de tiempo utilizando API metoesource
 ---
 # **Consulta de Prevision del tiempo Localidades**
 
-* Esta pagina es un aplicacion para buscar la prevision del tiempo de localidades, ciudades del mundo
-* para obtener la informacion del tiempo se utiliza la API de Meteosource.
-* Para obtener el tiempo de alguna ciudad o localidad debes ingresar esta informacion en la casilla de texto y dar clic al boton Buscar
+* Esta página es un aplicación para buscar la previsión del tiempo de localidades, ciudades del mundo
+* para obtener la información del tiempo se utiliza la API de Meteosource.
+* Para obtener el tiempo de alguna ciudad o localidad debes ingresar esta información en la casilla de texto y dar clic al boton Buscar
 * Este desplegara la informacion relacionada a ciudades o localidades en una tabla HTML, alli debes seleccionar alguna localidad dando clic al boton Seleccionar
-* Alli se desplegara la informacion de tu Localidad como la elevacion de nivel del Mar, Coordenas geograficas, Temperatura Actual, la prevision del tiempo para el día actual y el siguiente dia, con sus temperaturas minimas y maxinas. Prevision de lluvias o nieve, ademas de la prevision del tiempo para los proximos 7 días, mostrando esta informacion mediante un Grafico.
+* Allí se desplegara la información de tu Localidad como la elevación de nivel del Mar, Coordenas geográficas, Temperatura Actual, la previsión del tiempo para el día actual y el siguiente día, con sus temperaturas mínimas y máxinas según su sistema de medición que puede variar en Celcius o Fahrenheit. Previsión de lluvias o nieve, ademas de la previsión del tiempo para los próximos 7 días, mostrando esta información mediante un Gráfico de la librería ChartJs.
 
 
 [mauriespinoza.github.io] https://mauriespinoza.github.io/AppPrevisionTiempoAPI/
