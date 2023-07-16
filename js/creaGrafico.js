@@ -14,7 +14,7 @@ export const crearGrafico = (data) => {
       labels: labels,
       datasets: [
         {
-          label: "Fecha",
+          label: "Temperaturas Mínima",
           data: valuesMin,
           // backgroundColor: "rgba(0, 123, 255, 0.5)",
           backgroundColor: "red",
@@ -22,7 +22,7 @@ export const crearGrafico = (data) => {
           borderWidth: 3,
         },
         {
-          label: "Fecha",
+          label: "Temperaturas Máxima",
           data: values,
           backgroundColor: "rgba(0, 123, 255, 0.5)",
           borderWidth: 3,

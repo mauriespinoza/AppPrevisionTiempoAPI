@@ -25,6 +25,7 @@ let infoGrafico =[];
 function localidad(){
     const index = localidades.findIndex((el) => el.place_id == IDLocalidad);
     console.log("index: " + index);
+    HabilitaEfectoCargando();
     const localidad = localidades[index];
     console.log("lat: " + localidad.lat  + ' lon: ' + localidad.lon);
     latitude = localidad.lat;
@@ -50,6 +51,7 @@ function localidad(){
         timezone = datos.timezone;
         console.log(infoTempGeneral);
         console.log('unidadMedida:',unidadMedida);
+        DehabilitaEfectoCargando();
     };
     getDataAPI()
     .then((result)=>{
@@ -58,6 +60,8 @@ function localidad(){
       document.getElementById('rowGrafico').style.display = 'block';
       //Oculta Tabla Localidades
       document.getElementById('tabla-contenedor').style.display = 'none';
+      
+      // document.getElementById('theadLocalidades').style.display = 'none';
       ///////////////////////////////////////////////
       //Card Localidad Info General
       creaCardGeneral(elevation,latitude,longitud,DescLocalidad);
@@ -89,6 +93,7 @@ function localidad(){
   _btnBuscar.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('evento click');
+    HabilitaEfectoCargando();
     const url =URL_FIND_PLACES + `${_txtUbicacion.value}&language=en&key=${apiKey}`;
     console.log(`url::${url}`);
     const getData = async () => {
@@ -98,6 +103,7 @@ function localidad(){
       console.log(`data::${localidades}`);
       document.getElementById('rowInfo').style.display = 'none';
       document.getElementById('rowGrafico').style.display = 'none';
+      DehabilitaEfectoCargando();
     };
     getData().then((result) => {
         console.log(`result::${result}`);
@@ -145,4 +151,10 @@ function localidad(){
     IDLocalidad = element.place_id;
     localidad();
     //selectLocalidad(element.place_id);
+  }
+  function HabilitaEfectoCargando(){
+    document.getElementById('contenedorcargando').style.display = 'flex';
+  }
+  function DehabilitaEfectoCargando(){
+    document.getElementById('contenedorcargando').style.display = 'none';
   }

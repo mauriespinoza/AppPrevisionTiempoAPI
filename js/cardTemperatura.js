@@ -14,9 +14,9 @@ export const creaCardTemperatura = (infoTemp, infoTempGeneral,unidadMedida) => {
       lblTempMax_2.innerText = infoTemp[1].all_day.temperature_max;
      if(unidadMedida =='metric'){
        unidadMedida = 'C°'
-     } else {
+     } else if(unidadMedida == 'us'){
        unidadMedida = 'F°'
-     }
+     } 
      lblUnidadMetrica.innerText = 'Temperatura del Aire en ' + unidadMedida;
      lblTempActual.innerText=  infoTempGeneral.temperature;
 }
