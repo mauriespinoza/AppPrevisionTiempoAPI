@@ -38,6 +38,7 @@ function localidad(){
     
     let infoTemp = [];
     let infoTempGeneral = {};
+    let velocidadViento = '0';
     const getDataAPI= async ()=>{
         const response = await fetch(url);
         const datos = await response.json();
@@ -64,7 +65,7 @@ function localidad(){
       // document.getElementById('theadLocalidades').style.display = 'none';
       ///////////////////////////////////////////////
       //Card Localidad Info General
-      creaCardGeneral(elevation,latitude,longitud,DescLocalidad);
+      creaCardGeneral(elevation,latitude,longitud,DescLocalidad,infoTemp);
       ///////////////////////////////////////////////
       //Card Temperatura
       creaCardTemperatura(infoTemp,infoTempGeneral,unidadMedida);
