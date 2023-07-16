@@ -204,6 +204,26 @@ thead {
 #contenedorcargando{
   display: none;
 }
+#td_0{
+  text-align: left;
+}
+#td_00{
+  text-align: left;
+}
+#td_1{
+  text-align: center;
+}
+#td_2{
+  text-align: center;
+}
+#td_3{
+  text-align: center;
+}
+#td_4{
+  text-align: center;
+}
+
+
 @media screen and (max-width: 500px) {
   table {
     border: 0;
@@ -250,6 +270,18 @@ thead {
   
   table td:last-child {
     border-bottom: 0;
+  }
+  #td_1{
+    text-align: right;
+  }
+  #td_2{
+    text-align: right;
+  }
+  #td_3{
+    text-align: right;
+  }
+  #td_4{
+    text-align: right;
   }
   /* .text-center{
     align-items: end;
