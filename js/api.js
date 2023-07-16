@@ -90,11 +90,17 @@ function localidad(){
       const lblTempMin_2 = document.getElementById('lblTempMin_2');
       const lblTempMax_1 = document.getElementById('lblTempMax_1');
       const lblTempMax_2 = document.getElementById('lblTempMax_2');
+      const lblUnidadMetrica = document.getElementById('lblUnidadMetrica');
       lblTempMin_1.innerText = tempMin_1;
       lblTempMin_2.innerText = tempMin_2;
       lblTempMax_1.innerText = tempMax_1;
       lblTempMax_2.innerText = tempMax_2;
-
+      if(unidadMedida =='metric'){
+        unidadMedida = 'C°'
+      } else {
+        unidadMedida = 'F°'
+      }
+      lblUnidadMetrica.innerText = 'Temperatura del Aire en ' + unidadMedida;
       //grid columna lluvias
       const lblLluviaCant_1 = document.getElementById('lblLluviaCant_1');
       const lblLluviaCant_2 = document.getElementById('lblLluviaCant_2');
@@ -134,31 +140,47 @@ function localidad(){
       const data = await response.json();
       localidades = data;
       console.log(`data::${localidades}`);
+      document.getElementById('rowInfo').style.display = 'none';
+      document.getElementById('rowGrafico').style.display = 'none';
     };
     getData().then((result) => {
-        console.log(result);
+        console.log(`result::${result}`);
         let x=0;
         const botones=null;
         document.getElementById('tabla-contenedor').style.display = 'flex';
         table.innerHTML ='';
-        localidades.forEach((element, index) => {
-                console.log(element.name);
-                table.innerHTML += `
-                <td data-label="Id">${element.place_id}</td>
-                <td data-label="Nombre">${element.name}</td>
-                <td data-label="Area">${element.adm_area1}</td>
-                <td data-label="Provincia">${element.adm_area2}</td>
-                <td data-label="Pais">${element.country}</td>
-                <td data-label="Seleccionar">
-                <button id="button-${index}" class="btn btn-primary">Seleccionar</button>
-                </td>
-                `;  // <=======
-              });
-        localidades.forEach((element, index) => {
-                document.getElementById(`button-${index}`).addEventListener('click', () =>
-                  funcionIntermedia(index)
-                );
-       });
+
+        if (localidades.length > 0) {
+          localidades.forEach((element, index) => {
+            console.log(element.name);
+            table.innerHTML += `
+            <td data-label="Id">${element.place_id}</td>
+            <td data-label="Nombre">${element.name}</td>
+            <td data-label="Area">${element.adm_area1}</td>
+            <td data-label="Provincia">${element.adm_area2}</td>
+            <td data-label="Pais">${element.country}</td>
+            <td data-label="Seleccionar">
+            <button id="button-${index}" class="btn btn-primary">Seleccionar</button>
+            </td>
+            `; // <=======
+          });
+          localidades.forEach((element, index) => {
+            document
+              .getElementById(`button-${index}`)
+              .addEventListener("click", () => funcionIntermedia(index));
+          });
+        } else {
+          table.innerHTML = `
+          <div>
+              <h4>Sin resultados</h4> 
+          </div>
+          `;
+          document.getElementById('rowInfo').style.display = 'none';
+          document.getElementById('rowGrafico').style.display = 'none';
+          
+        }
+
+        
     });
   });
   const funcionIntermedia = function (index) {    // <=======
