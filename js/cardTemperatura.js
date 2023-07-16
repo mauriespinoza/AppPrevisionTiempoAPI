@@ -7,7 +7,8 @@ const lblUnidadMetrica = document.getElementById('lblUnidadMetrica');
 
 export const creaCardTemperatura = (infoTemp, infoTempGeneral,unidadMedida) => {
      //Card Temperatura
-      lblTempMin_1.innerText = infoTemp[0].all_day.temperature_min;
+     console.log('creaCardTemperatura()'); 
+     lblTempMin_1.innerText = infoTemp[0].all_day.temperature_min;
       lblTempMin_2.innerText = infoTemp[1].all_day.temperature_min;
       lblTempMax_1.innerText = infoTemp[0].all_day.temperature_max;
       lblTempMax_2.innerText = infoTemp[1].all_day.temperature_max;

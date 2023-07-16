@@ -5,6 +5,7 @@ const fecha  = document.getElementById('lblFecha');
 
 export const creaCardGeneral = (elevation,latitude,longitud,DescLocalidad)=>{
      //Card Localidad Info General
+     console.log('creaCardGeneral()');
      alturaLocalidad.innerText = 'Altura: ' + elevation;
      console.log("elevation::",elevation);
      coordenadasLocalidad.innerText = 'Coordenadas Lat: ' + latitude + '   Lon: ' + longitud;
