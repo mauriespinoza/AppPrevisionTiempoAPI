@@ -1,5 +1,7 @@
 import {crearGrafico} from  "./creaGrafico.js";
-
+import {creaCardTemperatura} from "./cardTemperatura.js";
+import {creaCardLluvias} from "./cardLluvias.js";
+import {creaCardGeneral} from "./cardInfoGeneral.js"
 
 const _btnBuscar = document.getElementById('btnBuscar');
 const _txtUbicacion = document.getElementById('txtUbicacion');
@@ -51,72 +53,26 @@ function localidad(){
     };
     getDataAPI()
     .then((result)=>{
-        infoTemp.forEach((element)=>{
-            console.log(`info.day::${element.day}`);
-            console.log(`info.TempMAx::${element.all_day.temperature_max}`);
-        });
-
+      //Habilita card de Info y Grafico
       document.getElementById('rowInfo').style.display = 'flex';
       document.getElementById('rowGrafico').style.display = 'block';
+      //Oculta Tabla Localidades
       document.getElementById('tabla-contenedor').style.display = 'none';
-
-      let tempMin_1 =   infoTemp[0].all_day.temperature_min;
-      let tempMax_1 =  infoTemp[0].all_day.temperature_max;
-      let tempMin_2 =   infoTemp[1].all_day.temperature_min;
-      let tempMax_2 =  infoTemp[1].all_day.temperature_max;
-      let lluvia_1 = infoTemp[0].all_day.precipitation.total;
-      let lluviaTipo_1 = infoTemp[0].all_day.precipitation.type;
-      let lluvia_2 = infoTemp[1].all_day.precipitation.total;
-      let lluviaTipo_2 = infoTemp[1].all_day.precipitation.type;
-      console.log("tempMin_1::",tempMin_1);
-
-      
-      const alturaLocalidad = document.getElementById('lblAltura');
-      const coordenadasLocalidad = document.getElementById('lblCoordenadas');
-      alturaLocalidad.innerText = 'Altura: ' + elevation;
-      console.log("elevation::",elevation);
-      coordenadasLocalidad.innerText = 'Coordenadas Lat: ' + latitude + '   Lon: ' + longitud;
-      const date = new Date();   
-      let fechaActual =date.getFullYear();
-      const fecha  = document.getElementById('lblFecha');
-      fecha.innerText = date;
-      const obj = infoTempGeneral.temperature;
-      console.log(infoTempGeneral.temperature);
-      const lblLocalidad= document.getElementById('lblLocalidad');
-      //lblLocalidad.innerText = _txtUbicacion.value.toUpperCase();
-      lblLocalidad.innerText = DescLocalidad;
-      const lblTempActual = document.getElementById('lblTempActual');
-      const lblTempMin_1 = document.getElementById('lblTempMin_1');
-      const lblTempMin_2 = document.getElementById('lblTempMin_2');
-      const lblTempMax_1 = document.getElementById('lblTempMax_1');
-      const lblTempMax_2 = document.getElementById('lblTempMax_2');
-      const lblUnidadMetrica = document.getElementById('lblUnidadMetrica');
-      lblTempMin_1.innerText = tempMin_1;
-      lblTempMin_2.innerText = tempMin_2;
-      lblTempMax_1.innerText = tempMax_1;
-      lblTempMax_2.innerText = tempMax_2;
-      if(unidadMedida =='metric'){
-        unidadMedida = 'C°'
-      } else {
-        unidadMedida = 'F°'
-      }
-      lblUnidadMetrica.innerText = 'Temperatura del Aire en ' + unidadMedida;
-      //grid columna lluvias
-      const lblLluviaCant_1 = document.getElementById('lblLluviaCant_1');
-      const lblLluviaCant_2 = document.getElementById('lblLluviaCant_2');
-      const lblLluviaTipo_1 = document.getElementById('lblLluviaTipo_1');
-      const lblLluviaTipo_2 = document.getElementById('lblLluviaTipo_2'); 
-      lblLluviaCant_1.innerText = lluvia_1;
-      lblLluviaCant_2.innerText = lluvia_2;
-      lblLluviaTipo_1.innerText = lluviaTipo_1;
-      lblLluviaTipo_2.innerText = lluviaTipo_2;
-      lblTempActual.innerText=  infoTempGeneral.temperature;
-
-      const labels = infoTemp.map((entry) => entry.day);
-      const values = infoTemp.map((entry) => entry.all_day.temperature_max);
-      const valuesMin = infoTemp.map((entry) => entry.all_day.temperature_min);
-
+      ///////////////////////////////////////////////
+      //Card Localidad Info General
+      creaCardGeneral(elevation,latitude,longitud,DescLocalidad);
+      ///////////////////////////////////////////////
+      //Card Temperatura
+      creaCardTemperatura(infoTemp,infoTempGeneral,unidadMedida);
+      ///////////////////////////////////////////////
+      //Card lluvias
+      creaCardLluvias(infoTemp);
+      //Card Grafico Pronostico tiempo 7 dias
       crearGrafico(infoGrafico);
+    })
+    .catch((error)=>{
+      console.error(`Hemos tenido un problema::${error}`)
+      alert("Hemos tenido un inconveniente, intente nuevamente. Por favor.");
     });
 }
 
@@ -145,8 +101,6 @@ function localidad(){
     };
     getData().then((result) => {
         console.log(`result::${result}`);
-        let x=0;
-        const botones=null;
         document.getElementById('tabla-contenedor').style.display = 'flex';
         table.innerHTML ='';
 
@@ -178,9 +132,11 @@ function localidad(){
           document.getElementById('rowInfo').style.display = 'none';
           document.getElementById('rowGrafico').style.display = 'none';
           
-        }
-
-        
+        } 
+    })
+    .catch((error)=>{
+      console.error(`Hemos tenido un problema::${error}`)
+      alert("Hemos tenido un inconveniente, intente nuevamente. Por favor.");
     });
   });
   const funcionIntermedia = function (index) {    // <=======
