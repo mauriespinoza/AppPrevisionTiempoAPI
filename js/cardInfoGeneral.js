@@ -14,5 +14,5 @@ export const creaCardGeneral = (elevation,latitude,longitud,DescLocalidad,infoTe
      let fechaActual =date.getFullYear();
      fecha.innerText = date;
      lblLocalidad.innerText = DescLocalidad;
-     velocidadViento.innerText = 'Velocidad: ' + infoTemp[0].all_day.wind.speed + ' Dirección: ' + infoTemp[0].all_day.wind.dir + ' Angulo: ' + infoTemp[0].all_day.wind.angle;
+     velocidadViento.innerText = 'Velocidad Viento: ' + infoTemp[0].all_day.wind.speed + ' Dirección: ' + infoTemp[0].all_day.wind.dir + ' Angulo: ' + infoTemp[0].all_day.wind.angle;
 }
